@@ -1,15 +1,20 @@
 package com.yuramoroz.spring_crm_system.repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.yuramoroz.spring_crm_system.config.StorageConfig;
 import com.yuramoroz.spring_crm_system.entity.Trainee;
 import com.yuramoroz.spring_crm_system.entity.Trainer;
 import com.yuramoroz.spring_crm_system.entity.Training;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
+
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -20,20 +25,22 @@ import java.util.Map;
 @Component
 public class StorageInitializer implements BeanPostProcessor {
 
-    private final ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper;
 
     private final Map<Long, Trainee> traineeMap;
     private final Map<Long, Trainer> trainerMap;
-    private final Map<String, Training> trainingMap;
+    private final Map<Long, Training> trainingMap;
     @Value("${storage.init.file}")
     private String filePath;
 
     public StorageInitializer(@Qualifier("traineeStorage") Map<Long, Trainee> traineeMap,
                               @Qualifier("trainerStorage") Map<Long, Trainer> trainerMap,
-                              @Qualifier("trainingStorage") Map<String, Training> trainingMap) {
+                              @Qualifier("trainingStorage") Map<Long, Training> trainingMap,
+                              ObjectMapper mapper) {
         this.traineeMap = traineeMap;
         this.trainerMap = trainerMap;
         this.trainingMap = trainingMap;
+        this.mapper = mapper;
     }
 
     @Override
@@ -45,7 +52,7 @@ public class StorageInitializer implements BeanPostProcessor {
     }
 
     public void initializeStorage(){
-        try (InputStream input = Files.newInputStream(Paths.get(filePath))){
+        try (InputStream input = new FileInputStream("src/main/resources/initial-data.json")){
 
             Map<String, List<Map<String, Object>>> data = mapper.readValue(input, Map.class);
 
@@ -61,11 +68,10 @@ public class StorageInitializer implements BeanPostProcessor {
 
             data.get("trainings").forEach(entry -> {
                 Training training = mapper.convertValue(entry, Training.class);
-                trainingMap.put(training.getTrainingName(), training);
+                trainingMap.put(training.getId(), training);
             });
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-
 }

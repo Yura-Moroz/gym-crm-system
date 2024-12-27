@@ -1,9 +1,8 @@
 package com.yuramoroz.spring_crm_system.entity;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -14,7 +13,12 @@ import java.time.LocalDate;
 public class Trainee extends User{
     private Long id;
     private String address;
+    @JsonProperty("dateOfBirth")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
     private LocalDate dateOfBirth;
+
+    public Trainee() {
+    }
 
     public Trainee(Long userId, String firstName, String lastName, String userName, String password, Boolean isActive, String address, LocalDate dateOfBirth) {
         super(firstName, lastName, userName, password, isActive);

@@ -1,0 +1,36 @@
+{
+  "trainers": [
+{
+"id": 1,
+"firstName": "John",
+"lastName": "Conor",
+"userName": "johnConor@007",
+"password": "qwerty",
+"isActive": true,
+"specialization": "Fitness"
+}
+],
+"trainees": [
+{
+"id": 12,
+"firstName": "Alex",
+"lastName": "Bronco",
+"userName": "alex@Bro123",
+"password": "azaza",
+"isActive": true,
+"address": "Kyiv",
+"dateOfBirth": "26.07.2001"
+}
+],
+"trainings": [
+{
+"id": 15,
+"traineeId": 12,
+"trainerId": 1,
+"trainingName": "Back",
+"trainingType": "BACK_TRAINING",
+"date": "05.01.2025",
+"trainingDuration": 3600
+}
+]
+}
