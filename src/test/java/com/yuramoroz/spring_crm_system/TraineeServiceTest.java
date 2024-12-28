@@ -1,6 +1,6 @@
 package com.yuramoroz.spring_crm_system;
 
-import com.yuramoroz.spring_crm_system.dao.TraineeDAO;
+import com.yuramoroz.spring_crm_system.repository.TraineeDAO;
 import com.yuramoroz.spring_crm_system.entity.Trainee;
 import com.yuramoroz.spring_crm_system.service.TraineeService;
 import org.junit.jupiter.api.Assertions;
@@ -27,8 +27,7 @@ public class TraineeServiceTest {
     @BeforeEach
     public void setUp(){
         MockitoAnnotations.openMocks(this);
-        trainee = new Trainee(37L, "Peter", "Tarantino", "taranPet@000", "ytrewq",
-                true, "Lviv", LocalDate.of(1999, 8, 29));
+        trainee = new Trainee(37L, "Peter", "Tarantino",true, "Lviv", LocalDate.of(1999, 8, 29));
     }
 
     @Test

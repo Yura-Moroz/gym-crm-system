@@ -8,13 +8,12 @@ import com.yuramoroz.spring_crm_system.entity.Trainer;
 import com.yuramoroz.spring_crm_system.entity.Training;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-public class StorageConfig {
+public class AppConfig {
 
     @Bean
     public Map<Long, Trainee> traineeStorage() {

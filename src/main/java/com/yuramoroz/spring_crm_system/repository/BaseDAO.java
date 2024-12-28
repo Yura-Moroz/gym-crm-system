@@ -1,4 +1,4 @@
-package com.yuramoroz.spring_crm_system.dao;
+package com.yuramoroz.spring_crm_system.repository;
 
 import java.util.List;
 

@@ -1,9 +1,8 @@
-package com.yuramoroz.spring_crm_system.dao;
+package com.yuramoroz.spring_crm_system.repository;
 
 import com.yuramoroz.spring_crm_system.entity.Trainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package com.yuramoroz.spring_crm_system.service;
 
-import com.yuramoroz.spring_crm_system.dao.TrainerDAO;
+import com.yuramoroz.spring_crm_system.repository.TrainerDAO;
 import com.yuramoroz.spring_crm_system.entity.Trainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TrainerService {
+public class TrainerService{
     @Autowired
     private TrainerDAO trainerDAO;
 
     public void createTrainer(Trainer trainer){
+        trainer.setPassword(ProfileService.generatePassword());
+        trainer.setUserName(ProfileService.generateUsername(trainer));
         trainerDAO.create(trainer);
     }
 

@@ -1,6 +1,6 @@
 package com.yuramoroz.spring_crm_system;
 
-import com.yuramoroz.spring_crm_system.dao.TrainerDAO;
+import com.yuramoroz.spring_crm_system.repository.TrainerDAO;
 import com.yuramoroz.spring_crm_system.entity.Trainer;
 import com.yuramoroz.spring_crm_system.service.TrainerService;
 import org.junit.jupiter.api.Assertions;
@@ -27,7 +27,7 @@ public class TrainerServiceTest {
     @BeforeEach
     public void setUp(){
         MockitoAnnotations.openMocks(this);
-        trainer = new Trainer(3L, "Jason", "Statham", "stathem145", "xcvaggdfh", true, "Martial Arts");
+        trainer = new Trainer(3L, "Jason", "Statham",true, "Martial Arts");
     }
 
     @Test

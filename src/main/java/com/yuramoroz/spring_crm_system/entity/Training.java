@@ -4,11 +4,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Training {
     private Long id;
     private Long traineeId;
@@ -20,6 +22,4 @@ public class Training {
     private LocalDate trainingDate;
     private Long trainingDuration;
 
-    public Training() {
-    }
 }

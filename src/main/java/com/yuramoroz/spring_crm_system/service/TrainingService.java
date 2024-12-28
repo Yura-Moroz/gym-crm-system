@@ -1,6 +1,6 @@
 package com.yuramoroz.spring_crm_system.service;
 
-import com.yuramoroz.spring_crm_system.dao.TrainingDAO;
+import com.yuramoroz.spring_crm_system.repository.TrainingDAO;
 import com.yuramoroz.spring_crm_system.entity.Training;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

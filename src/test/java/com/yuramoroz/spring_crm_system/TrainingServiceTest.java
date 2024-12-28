@@ -1,6 +1,6 @@
 package com.yuramoroz.spring_crm_system;
 
-import com.yuramoroz.spring_crm_system.dao.TrainingDAO;
+import com.yuramoroz.spring_crm_system.repository.TrainingDAO;
 import com.yuramoroz.spring_crm_system.entity.Training;
 import com.yuramoroz.spring_crm_system.entity.TrainingTypeName;
 import com.yuramoroz.spring_crm_system.service.TrainingService;
