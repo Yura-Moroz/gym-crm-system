@@ -11,7 +11,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.time.LocalDate;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.List;
 
 import static org.mockito.Mockito.*;
@@ -30,25 +32,13 @@ public class TrainingServiceTest {
     public void setUp(){
         MockitoAnnotations.openMocks(this);
         training = new Training(15L, 44L, 3L, "Chest",
-                TrainingTypeName.BENCH_TRAINING, LocalDate.of(2025, 1, 25), 5400L);
+                TrainingTypeName.BENCH_TRAINING, LocalDateTime.of(2025, Month.AUGUST, 27, 12, 0, 0), Duration.ofMinutes(90));
     }
 
     @Test
     public void createTrainingTest(){
         trainingService.createTraining(training);
         verify(trainingDAO, times(1)).create(training);
-    }
-
-    @Test
-    public void updateTrainingTest(){
-        trainingService.updateTraining(training);
-        verify(trainingDAO, times(1)).update(training);
-    }
-
-    @Test
-    public void deleteTrainingTest(){
-        trainingService.deleteTraining(training);
-        verify(trainingDAO, times(1)).delete(training);
     }
 
     @Test

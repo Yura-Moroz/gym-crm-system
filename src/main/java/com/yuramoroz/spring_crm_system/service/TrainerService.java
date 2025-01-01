@@ -2,6 +2,7 @@ package com.yuramoroz.spring_crm_system.service;
 
 import com.yuramoroz.spring_crm_system.repository.TrainerDAO;
 import com.yuramoroz.spring_crm_system.entity.Trainer;
+import com.yuramoroz.spring_crm_system.utils.ProfileHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,24 +10,33 @@ import java.util.List;
 
 @Service
 public class TrainerService{
+
+    private static long trainerIDs = 0;
+
     @Autowired
     private TrainerDAO trainerDAO;
 
-    public void createTrainer(Trainer trainer){
-        trainer.setPassword(ProfileService.generatePassword());
-        trainer.setUserName(ProfileService.generateUsername(trainer));
-        trainerDAO.create(trainer);
+    public Trainer createTrainer(Trainer trainer){
+        return trainerDAO.create(trainer);
     }
 
-    public void updateTrainer(Trainer trainer){
-        trainerDAO.update(trainer);
+    public Trainer createTrainer(String firstName, String lastName, boolean isActive, String specialization){
+        Trainer trainer = new Trainer();
+        trainer.setFirstName(firstName);
+        trainer.setLastName(lastName);
+        trainer.setIsActive(isActive);
+        trainer.setSpecialization(specialization);
+        trainer.setPassword(ProfileHandler.generatePassword());
+        trainer.setUserName(ProfileHandler.generateUsername(trainer));
+        trainer.setId(++trainerIDs);
+        return createTrainer(trainer);
     }
 
-    public void deleteTrainer(Trainer trainer){
-        trainerDAO.delete(trainer);
+    public Trainer updateTrainer(long id){
+        return trainerDAO.update(id);
     }
 
-    public Trainer getTrainerById(Long id){
+    public Trainer getTrainerById(long id){
         return trainerDAO.getById(id);
     }
 

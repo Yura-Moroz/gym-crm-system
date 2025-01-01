@@ -14,7 +14,7 @@ public class TraineeDAO implements BaseDAO<Trainee> {
     private Map<Long, Trainee> traineeStorage;
 
     @Override
-    public Trainee getById(Long id) {
+    public Trainee getById(long id) {
         return traineeStorage.get(id);
     }
 
@@ -22,13 +22,16 @@ public class TraineeDAO implements BaseDAO<Trainee> {
     public List<Trainee> getAllItems() {return new ArrayList<>(traineeStorage.values());}
 
     @Override
-    public void create(Trainee trainee) {
+    public Trainee create(Trainee trainee) {
         traineeStorage.put(trainee.getId(), trainee);
+        return trainee;
     }
 
     @Override
-    public void update(Trainee trainee) {
-        traineeStorage.put(trainee.getId(), trainee);
+    public Trainee update(long id) {
+        Trainee trainee = traineeStorage.get(id);
+        traineeStorage.put(id, trainee);
+        return trainee;
     }
 
     @Override

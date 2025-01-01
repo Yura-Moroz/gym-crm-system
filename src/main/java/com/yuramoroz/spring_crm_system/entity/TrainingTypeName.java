@@ -10,5 +10,6 @@ public enum TrainingTypeName {
     BOXES,
     POWERLIFTING,
     CARDIO,
-    CROSSFIT
+    CROSSFIT,
+    FITNESS
 }

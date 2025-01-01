@@ -27,7 +27,7 @@ public class TraineeServiceTest {
     @BeforeEach
     public void setUp(){
         MockitoAnnotations.openMocks(this);
-        trainee = new Trainee(37L, "Peter", "Tarantino",true, "Lviv", LocalDate.of(1999, 8, 29));
+        trainee = new Trainee("Peter", "Tarantino",true, "Lviv", LocalDate.of(1999, 8, 29));
     }
 
     @Test
@@ -38,8 +38,8 @@ public class TraineeServiceTest {
 
     @Test
     public void updateTraineeTest(){
-        traineeService.updateTrainee(trainee);
-        verify(traineeDAO, times(1)).update(trainee);
+        traineeService.updateTrainee(1);
+        verify(traineeDAO, times(1)).update(1);
     }
 
     @Test

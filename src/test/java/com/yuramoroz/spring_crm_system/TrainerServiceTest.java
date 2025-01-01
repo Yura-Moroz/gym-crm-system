@@ -27,7 +27,7 @@ public class TrainerServiceTest {
     @BeforeEach
     public void setUp(){
         MockitoAnnotations.openMocks(this);
-        trainer = new Trainer(3L, "Jason", "Statham",true, "Martial Arts");
+        trainer = new Trainer("Jason", "Statham",true, "Martial Arts");
     }
 
     @Test
@@ -38,14 +38,8 @@ public class TrainerServiceTest {
 
     @Test
     public void updateTrainerTest(){
-        trainerService.updateTrainer(trainer);
-        verify(trainerDAO, times(1)).update(trainer);
-    }
-
-    @Test
-    public void deleteTrainerTest(){
-        trainerService.deleteTrainer(trainer);
-        verify(trainerDAO, times(1)).delete(trainer);
+        trainerService.updateTrainer(1);
+        verify(trainerDAO, times(1)).update(1);
     }
 
     @Test

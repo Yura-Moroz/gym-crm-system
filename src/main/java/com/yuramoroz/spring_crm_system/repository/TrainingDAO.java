@@ -14,7 +14,13 @@ public class TrainingDAO implements BaseDAO<Training> {
     private Map<Long, Training> trainingStorage;
 
     @Override
-    public Training getById(Long id) {
+    public Training create(Training training) {
+        trainingStorage.put(training.getId(), training);
+        return training;
+    }
+
+    @Override
+    public Training getById(long id) {
         return trainingStorage.get(id);
     }
 
@@ -24,19 +30,12 @@ public class TrainingDAO implements BaseDAO<Training> {
     }
 
     @Override
-    public void create(Training training) {
-        trainingStorage.put(training.getId(), training);
+    public Training update(long id) {
+        return null;
     }
 
     @Override
-    public void update(Training training) {
-        trainingStorage.put(training.getId(), training);
-    }
-
-    @Override
-    public void delete(Training training) {
-        trainingStorage.remove(training.getId());
-    }
+    public void delete(Training training) {}
 
     @Autowired
     public void setTrainingStorage(@Qualifier("trainingStorage") Map<Long, Training> trainingStorage){

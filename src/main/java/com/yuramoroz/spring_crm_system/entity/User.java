@@ -1,8 +1,11 @@
 package com.yuramoroz.spring_crm_system.entity;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Data
+@SuperBuilder
+@AllArgsConstructor
 @NoArgsConstructor
 public abstract class User {
 

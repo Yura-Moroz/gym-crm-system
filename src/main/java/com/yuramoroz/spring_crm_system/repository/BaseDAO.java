@@ -4,13 +4,13 @@ import java.util.List;
 
 public interface BaseDAO<T> {
 
-    public T getById(Long id);
+    public T getById(long id);
 
     public List<T> getAllItems();
 
-    public void create(T entity);
+    public T create(T entity);
 
-    public void update(T entity);
+    public T update(long id);
 
     public void delete(T entity);
 }

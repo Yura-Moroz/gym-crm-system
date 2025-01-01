@@ -14,7 +14,20 @@ public class TrainerDAO implements BaseDAO<Trainer> {
     private Map<Long, Trainer> trainerStorage;
 
     @Override
-    public Trainer getById(Long id) {
+    public Trainer create(Trainer trainer) {
+        trainerStorage.put(trainer.getId(), trainer);
+        return trainer;
+    }
+
+    @Override
+    public Trainer update(long id) {
+        Trainer trainer = trainerStorage.get(id);
+        trainerStorage.put(id, trainer);
+        return trainer;
+    }
+
+    @Override
+    public Trainer getById(long id) {
         return trainerStorage.get(id);
     }
 
@@ -22,19 +35,7 @@ public class TrainerDAO implements BaseDAO<Trainer> {
     public List<Trainer> getAllItems() {return new ArrayList<>(trainerStorage.values());}
 
     @Override
-    public void create(Trainer trainer) {
-        trainerStorage.put(trainer.getId(), trainer);
-    }
-
-    @Override
-    public void update(Trainer trainer) {
-        trainerStorage.put(trainer.getId(), trainer);
-    }
-
-    @Override
-    public void delete(Trainer trainer) {
-        trainerStorage.remove(trainer.getId());
-    }
+    public void delete(Trainer trainer) {}
 
     @Autowired
     public void setTrainerStorage(@Qualifier("trainerStorage") Map<Long, Trainer> trainerStorage){

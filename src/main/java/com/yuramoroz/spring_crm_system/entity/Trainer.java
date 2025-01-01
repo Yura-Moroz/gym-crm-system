@@ -1,20 +1,19 @@
 package com.yuramoroz.spring_crm_system.entity;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
-@Setter
-@Getter
-@ToString
-@EqualsAndHashCode
+@Data
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+@AllArgsConstructor
+@SuperBuilder
 public class Trainer extends User{
-    private Long id;
+    private long id;
     private String specialization;
 
-    public Trainer() {}
-
-    public Trainer(Long id, String firstName, String lastName, Boolean isActive, String specialization) {
+    public Trainer(String firstName, String lastName, boolean isActive, String specialization) {
         super(firstName, lastName, isActive);
-        this.id = id;
         this.specialization = specialization;
     }
 }
