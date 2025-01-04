@@ -17,7 +17,8 @@ public class TrainerService{
     private TrainerDAO trainerDAO;
 
     public Trainer createTrainer(Trainer trainer){
-        return trainerDAO.create(trainer);
+        trainerDAO.create(trainer);
+        return trainer;
     }
 
     public Trainer createTrainer(String firstName, String lastName, boolean isActive, String specialization){

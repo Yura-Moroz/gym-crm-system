@@ -19,7 +19,8 @@ public class TrainingService {
     private TrainingDAO trainingDAO;
 
     public Training createTraining(Training training){
-        return trainingDAO.create(training);
+        trainingDAO.create(training);
+        return training;
     }
 
     public Training createTraining(long traineeId, long trainerId, String trainingName,

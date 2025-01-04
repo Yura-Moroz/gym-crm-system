@@ -66,7 +66,7 @@ public class StorageInitializer implements BeanPostProcessor {
     public void initializeTraineeStorage() {
 
         if(traineeStoragePath == null || traineeStoragePath.isBlank()){
-            throw new IllegalArgumentException("No proper data for filePath was provided");
+            throw new IllegalArgumentException("No proper data for Trainee file path was provided");
         }
 
         List<Trainee> trainees = null;
@@ -81,7 +81,7 @@ public class StorageInitializer implements BeanPostProcessor {
     public void initializeTrainerStorage() {
 
         if(trainerStoragePath == null || trainerStoragePath.isBlank()){
-            throw new IllegalArgumentException("No proper data for filePath was provided");
+            throw new IllegalArgumentException("No proper data for Trainer file path was provided");
         }
 
         List<Trainer> trainers = null;
@@ -96,7 +96,7 @@ public class StorageInitializer implements BeanPostProcessor {
     public void initializeTrainingStorage() {
 
         if(trainingStoragePath == null || trainingStoragePath.isBlank()){
-            throw new IllegalArgumentException("No proper data for filePath was provided");
+            throw new IllegalArgumentException("No proper data for Training file path was provided");
         }
 
         List<Training> trainings = null;
